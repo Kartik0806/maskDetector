@@ -37,13 +37,17 @@ def predict_class(image):
             predictions = model.predict(crop)
             print(predictions[0][0])
             org = (x+20, y+40)
-            score = float(predictions[0])
+            score = float(predictions[0])   
             arg=0
             if(score>0.5):
                 arg=1
             cv2.putText(image_array,mask_label[arg],org,cv2.FONT_HERSHEY_SIMPLEX,color=(255,0,0), thickness=5,fontScale=1)
             cv2.rectangle(image_array,(x,y),(x+w,y+h),(255,0,0), thickness=3)
-        st.image([image_array]) 
+        # st.image([image_array]) 
+        figure=plt.figure()
+        plt.imshow(image_array)
+        plt.axis('off')
+        st.pyplot(figure)
 
 if __name__=="__main__":
     main()

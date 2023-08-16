@@ -64,7 +64,7 @@ def predict_class(image):
             score = float(predictions[0])
             print(score)
             arg=0
-            if(score>0.2):
+            if(score>0.001):
                 arg=1
             cv2.putText(image_array,mask_label[arg],(x1+10,y1+30),cv2.FONT_HERSHEY_SIMPLEX,color=(36,255,12), thickness=2,fontScale=0.8)
             cv2.rectangle(image_array,(x1,y1),(x2,y2),(255,0,0), thickness=3)

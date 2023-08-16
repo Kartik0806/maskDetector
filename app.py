@@ -55,7 +55,7 @@ def predict_class(image):
             # v[v <= lim] += value
             # final_hsv = cv2.merge((h, s, v))
             # crop = cv2.cvtColor(final_hsv, cv2.COLOR_HSV2RGB)
-            cv2.convertScaleAbs(crop, 5, -127)
+            # cv2.convertScaleAbs(crop, 5, -127)
             crop = cv2.resize(crop,(height,width))
             plt.imshow(crop)
             crop = np.reshape(crop,[1,height,width,3])
@@ -64,7 +64,7 @@ def predict_class(image):
             score = float(predictions[0])
             print(score)
             arg=0
-            if(score>0.35):
+            if(score>0.2):
                 arg=1
             cv2.putText(image_array,mask_label[arg],(x1+10,y1+30),cv2.FONT_HERSHEY_SIMPLEX,color=(36,255,12), thickness=2,fontScale=0.8)
             cv2.rectangle(image_array,(x1,y1),(x2,y2),(255,0,0), thickness=3)
